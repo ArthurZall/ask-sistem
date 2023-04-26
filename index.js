@@ -23,9 +23,14 @@ app.use(bodyParser.urlencoded({ extended: false })); //DECODIFICADOR DE DADOS EN
 // app.use(bodyParser.json()); //permissão para ler dados de formulario via json (API)
 
 //Rotas
-app.get("/", (req, res) => {
-    res.render("index.ejs");
+app.get("/", (req, res) => {  //SELECT * ALL FROM
+    Pergunta.findAll({raw: true}).then(perguntas =>{
+        res.render("index.ejs", {
+            perguntas: perguntas
+        });
+    }); 
 });
+
 app.get("/perguntar", (req, res) => {
     res.render("perguntar.ejs");
 });
@@ -44,6 +49,6 @@ app.post("/salvarpergunta", (req, res) => {
 });
 
 
-app.listen(8080, () => {
-    console.log("App rodando: http://localhost:8080/");
+app.listen(8282, () => {
+    console.log("App rodando: http://localhost:8282/");
 });
