@@ -24,8 +24,15 @@ app.use(bodyParser.urlencoded({ extended: false })); //DECODIFICADOR DE DADOS EN
 
 //Rotas
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+    Pergunta.findAll({ raw: true }).then(perguntas => {
+        res.render("index.ejs", {
+            pergunta: perguntas
+        });
+    })
+        ;
 });
+
+
 app.get("/perguntar", (req, res) => {
     res.render("perguntar.ejs");
 });
