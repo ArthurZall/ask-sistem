@@ -3,5 +3,23 @@
     <body>
         <%- include ('partials/navbar.ejs') %>
             <h1>Index</h1>
+            <div class="container">
+
+                <% perguntas.forEach(perguntas => { %>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h3><%= perguntas.titulo %></h3>
+                            <p><%= perguntas.descricao %></p>
+                        </div>
+                        <div class="card-footer">
+                            <!-- <p><%= perguntas.createdAt %></p> -->
+                        </div>
+                    </div>
+                    
+              
+                 <% }); %>
+
+            </div>
     </body>
     <%- include ('partials/footer.ejs') %>
