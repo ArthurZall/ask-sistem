@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false })); //DECODIFICADOR DE DADOS EN
 app.get("/", (req, res) => {
     Pergunta.findAll({
         raw: true, order: [
-            ['id', 'DESC']
+            ['id', 'DESC'] // DESC => Decrescente, ASC => Crescente
         ]
     }).then(perguntas => {
         res.render("index.ejs", {
